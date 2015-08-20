@@ -5,7 +5,7 @@ if check_libuv_result[0] != 0:
 	print 'Please install libuv fisrt!\n\
 	run "brew install libuv"'
 
-download_result = commands.getstatusoutput('curl -o proximac.zip https://raw.githubusercontent.com/proximac-org/proximac-install/master/proximac-v2.1.zip')
+download_result = commands.getstatusoutput('curl -o proximac.zip https://raw.githubusercontent.com/proximac-org/proximac-install/master/proximac.zip')
 if download_result[0] != 0:
 	print 'Download remote resources failed!'
 	exit()
