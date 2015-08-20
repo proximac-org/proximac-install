@@ -15,6 +15,16 @@ if download_result[0] != 0:
 	print 'Download remote resources failed!'
 	exit()
 
+download1_result = commands.getstatusoutput('cd /usr/local/bin && curl -o proximac https://raw.githubusercontent.com/proximac-org/proximac-install/master/proximac.py')
+if download1_result[0] != 0:
+	print 'Download remote resources failed!'
+	exit()
+
+chmod_result = commands.getstatusoutput('cd /usr/local/bin && chmod 777 proximac')
+if chmod_result[0] != 0:
+	print 'Cannot chage permission!'
+	exit()
+
 print 'Resources has been downloaded!'
 
 unzip_result = commands.getstatusoutput('cd /usr/local/proximac/ && unzip -o proximac.zip')
