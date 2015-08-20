@@ -18,7 +18,6 @@ if download_result[0] != 0:
 print 'Resources has been downloaded!'
 
 unzip_result = commands.getstatusoutput('cd /usr/local/proximac/ && unzip -o proximac.zip')
-print unzip_result
 if unzip_result[0] != 0:
 	print 'Unzip install files failed! Check your permission on this folder!'
 	exit()
