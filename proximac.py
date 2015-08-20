@@ -11,6 +11,19 @@ if argc == 3 and sys.argv[1] == 'start':
 	cmd_str = '/usr/local/proximac/proximac-cli -c ' + sys.argv[2]
 	print cmd_str
 	os.system(cmd_str)
+	exit()
+
 
 if argc == 2 and sys.argv[1] == 'stop':
-	os.system('killall proximac-cli')
+	kill_result = commands.getstatusoutput('killall proximac-cli')
+	if kill_result[0] != 0:
+		print 'Proximac may not be started or may be killed accidentally'
+		exit()
+	exit()
+
+print 'proximac v2.1\n\
+Usage:\n\
+start Proximac:\n\
+proximac start [path of your config file]\n\
+stop Proximac:\n\
+proximac stop '
