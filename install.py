@@ -1,18 +1,23 @@
 #!/usr/bin/python
-import commands
+import commands,os
 check_libuv_result = commands.getstatusoutput('ls /usr/local/lib/libuv.a')
 if check_libuv_result[0] != 0:
 	print 'Please install libuv fisrt!\n\
 	run "brew install libuv"'
 
-download_result = commands.getstatusoutput('curl -o proximac.zip https://raw.githubusercontent.com/proximac-org/proximac-install/master/proximac.zip')
+mkdir_result = commands.getstatusoutput('mkdir -p /usr/local/proximac/')
+if mkdir_result[0] != 0:
+	print 'Cannot create fodler!'
+	exit()
+
+download_result = commands.getstatusoutput('cd /usr/local/proximac/ && curl -o proximac.zip https://raw.githubusercontent.com/proximac-org/proximac-install/master/proximac.zip')
 if download_result[0] != 0:
 	print 'Download remote resources failed!'
 	exit()
 
 print 'Resources has been downloaded!'
 
-unzip_result = commands.getstatusoutput('unzip -o proximac.zip')
+unzip_result = commands.getstatusoutput('cd /usr/local/proximac/ && unzip -o proximac.zip')
 print unzip_result
 if unzip_result[0] != 0:
 	print 'Unzip install files failed! Check your permission on this folder!'
@@ -21,9 +26,10 @@ if unzip_result[0] != 0:
 print 'Now change kernel extension\'s owner'
 print 'Please enter your password to obtain root priviledge'
 
-chown_result = commands.getstatusoutput('sudo chown -R root:wheel proximac.kext')
+chown_result = commands.getstatusoutput('cd /usr/local/proximac/ && sudo chown -R root:wheel proximac.kext')
 if chown_result[0] != 0:
 	print 'command execution failed!'
 	exit()
 
+os.system('cd /usr/local/proximac/ && rm -rf proximac.zip')
 print 'Proximac is successfully installed!'
