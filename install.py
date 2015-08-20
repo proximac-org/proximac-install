@@ -42,3 +42,6 @@ if chown_result[0] != 0:
 
 os.system('cd /usr/local/proximac/ && rm -rf proximac.zip')
 print 'Proximac is successfully installed!'
+print 'To uninstall, just delete these files:'
+print '/usr/local/proximac/* (root)'
+print '/usr/local/bin/proximac'
