@@ -11,7 +11,7 @@ class Proximac:
 
     def __init__(self):
         self.command = Command()
-        self.description = "Proximac v%(version)s is an command-line open-source \
+        self.description = "Proximac v%(version)s is a command-line open-source \
                 alternative to Proxifier."  % {'version': self.version}
         self.usage = '''\
 proximac [-h] <command> [<args>]
@@ -84,7 +84,7 @@ class Command:
             print('''\
 Kernel extension cannot be loaded! \
 Maybe it is already loaded so you have to unload it first. \
-Or installing third-party kext is now allowed on your OS.''')
+Or installing third-party kext is not allowed on your OS.''')
             return False
         else:
             return True
